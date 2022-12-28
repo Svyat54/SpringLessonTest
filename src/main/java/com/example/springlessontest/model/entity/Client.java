@@ -27,6 +27,10 @@ public class Client {
         this.orders = orders;
     }
 
+    public Client(String nameClient) {
+        this.nameClient = nameClient;
+    }
+
     @Override
     public String toString() {
         return "{" +

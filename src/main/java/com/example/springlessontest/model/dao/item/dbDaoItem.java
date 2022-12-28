@@ -38,7 +38,9 @@ public class dbDaoItem implements IDaoItem{
 
     @Override
     public Item delete(Integer id) {
+        Item item = new Item(id, itemRepository.findById(id).get().getItemName(),
+                itemRepository.findById(id).get().getItemArticle());
         itemRepository.deleteById(id);
-        return new Item(id,null, -1L);
+        return item;
     }
 }

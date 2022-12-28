@@ -53,4 +53,8 @@ public class Item {
                 ", itemArticle=" + itemArticle +
                 '}';
     }
+
+    public String getItemName() {
+        return itemName;
+    }
 }
