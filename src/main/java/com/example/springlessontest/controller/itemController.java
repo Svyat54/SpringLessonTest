@@ -44,6 +44,11 @@ public class itemController {
         return iDaoItem.update(item);
     }
 
+    @GetMapping("/delete")
+    public Item delete(@RequestParam Integer id){
+        return iDaoItem.delete(id);
+    }
+
     @GetMapping("/ping")
     public String ping(){
         return "item_pong";

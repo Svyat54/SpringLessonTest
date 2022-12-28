@@ -38,6 +38,7 @@ public class dbDaoItem implements IDaoItem{
 
     @Override
     public Item delete(Integer id) {
-        return null;
+        itemRepository.deleteById(id);
+        return new Item(id,null, -1L);
     }
 }

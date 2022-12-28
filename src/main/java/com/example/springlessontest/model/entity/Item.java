@@ -3,6 +3,8 @@ package com.example.springlessontest.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Entity
 @Table(name = "item_t")
@@ -16,10 +18,20 @@ public class Item {
     @Column(nullable = false)
     private Long itemArticle;
 
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+    private Set<OrdersItem> ordersItem;
+
     public Item() {
         id = -1;
         itemName = "undefined";
         itemArticle = -1L;
+    }
+
+    public Item(Integer id, String itemName, Long itemArticle, Set<OrdersItem> ordersItems) {
+        this.id = id;
+        this.itemName = itemName;
+        this.itemArticle = itemArticle;
+        this.ordersItem = ordersItems;
     }
 
     public Item(Integer id, String itemName, Long itemArticle) {
