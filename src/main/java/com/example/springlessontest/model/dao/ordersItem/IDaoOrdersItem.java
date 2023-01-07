@@ -7,9 +7,5 @@ import java.util.Optional;
 
 
 public interface IDaoOrdersItem extends IDaoBase<OrdersItem> {
-    List<OrdersItem> findAll();
-    Optional findById(Integer id);
-    OrdersItem save(OrdersItem item);
-    OrdersItem update(OrdersItem item);
-    OrdersItem delete(Integer id);
+
 }

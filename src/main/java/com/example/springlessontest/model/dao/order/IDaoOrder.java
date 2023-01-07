@@ -6,9 +6,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IDaoOrder extends IDaoBase<Order> {
-    List<Order> findAll();
-    Optional findById(Integer id);
-    Order save(Order item);
-    Order update(Order item);
-    Order delete(Integer id);
+
 }

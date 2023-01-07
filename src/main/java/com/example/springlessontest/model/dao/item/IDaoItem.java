@@ -7,9 +7,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IDaoItem extends IDaoBase<Item> {
-    List<Item> findAll();
-    Optional findById(Integer id);
-    Item save(Item item);
-    Item update(Item item);
-    Item delete(Integer id);
+
 }

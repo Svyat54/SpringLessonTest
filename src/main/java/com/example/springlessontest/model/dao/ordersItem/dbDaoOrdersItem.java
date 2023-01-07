@@ -19,7 +19,7 @@ public class dbDaoOrdersItem implements IDaoOrdersItem{
     }
 
     @Override
-    public Optional findById(Integer id) {
+    public Optional<OrdersItem> findById(Integer id) {
         return ordersItemRepository.findById(id);
     }
 

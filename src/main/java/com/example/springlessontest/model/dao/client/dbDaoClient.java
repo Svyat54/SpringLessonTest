@@ -19,22 +19,30 @@ public class dbDaoClient implements IDaoClient{
     }
 
     @Override
-    public Optional findById(Integer id) {
+    public Optional<Client> findById(Integer id) {
         return clientRepository.findById(id);
     }
 
     @Override
     public Client save(Client client) {
-        return null;
+        return clientRepository.save(client);
     }
 
     @Override
     public Client update(Client client) {
+        if(clientRepository.findById(client.getId()).isPresent()){
+            return clientRepository.save(client);
+        }
         return null;
     }
 
     @Override
     public Client delete(Integer id) {
+        if(clientRepository.findById(id).isPresent()) {
+            Client client = clientRepository.findById(id).get();
+            clientRepository.deleteById(id);
+            return client;
+        }
         return null;
     }
 }

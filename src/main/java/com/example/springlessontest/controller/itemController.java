@@ -28,7 +28,7 @@ public class itemController {
     }
 
     @GetMapping("/get")
-    public Optional get (@RequestParam Integer id){
+    public Optional<Item> get (@RequestParam Integer id){
         return iDaoItem.findById(id);
     }
 

@@ -13,7 +13,7 @@ public class Order {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String description;
 
     @ManyToOne
@@ -25,11 +25,15 @@ public class Order {
 
     public Order() {}
 
-    public Order(Integer id, String description, Client client, Set<OrdersItem> ordersItems) {
+    public Order(Integer id, String description, Client client) {
         this.id = id;
         this.description = description;
         this.client = client;
-        this.ordersItems = ordersItems;
+    }
+
+    public Order(String description, Client client) {
+        this.description = description;
+        this.client = client;
     }
 
     @Override

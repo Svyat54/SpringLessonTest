@@ -27,6 +27,11 @@ public class Client {
         this.orders = orders;
     }
 
+    public Client(Integer id,String nameClient) {
+        this.id = id;
+        this.nameClient = nameClient;
+    }
+
     public Client(String nameClient) {
         this.nameClient = nameClient;
     }

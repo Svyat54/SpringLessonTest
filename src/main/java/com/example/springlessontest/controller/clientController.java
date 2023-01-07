@@ -14,13 +14,20 @@ public class clientController {
     @Autowired
     private IDaoClient iDaoClient;
 
+//    @GetMapping("/add")
+//    public void add(){
+//        iDaoClient.save(new Client(1, "Jon"));
+//        iDaoClient.save(new Client(2, "Bob" ));
+//        iDaoClient.save(new Client(3, "Karl" ));
+//    }
+
     @GetMapping("/all")
     public List<Client> all(){
         return iDaoClient.findAll();
     }
 
     @GetMapping("/get")
-    public Optional get(@RequestParam Integer id){
+    public Optional<Client> get(@RequestParam Integer id){
         return iDaoClient.findById(id);
     }
 
@@ -30,8 +37,8 @@ public class clientController {
     }
 
     @PostMapping("/update")
-    public Client update(@RequestParam String nameClient){
-        Client client = new Client(nameClient);
+    public Client update(@RequestParam Integer id,@RequestParam String nameClient){
+        Client client = new Client(id,nameClient);
         return iDaoClient.update(client);
     }
 
