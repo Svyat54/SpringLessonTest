@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/item")
-public class itemController {
+public class ItemController {
 
     @Autowired
     private IDaoItem iDaoItem;

@@ -2,7 +2,6 @@ package com.example.springlessontest.controller;
 
 import com.example.springlessontest.model.dao.client.IDaoClient;
 import com.example.springlessontest.model.dao.order.IDaoOrder;
-import com.example.springlessontest.model.entity.Client;
 import com.example.springlessontest.model.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/order")
-public class orderController {
+public class OrderController {
     @Autowired
     private IDaoOrder iDaoOrder;
     @Autowired

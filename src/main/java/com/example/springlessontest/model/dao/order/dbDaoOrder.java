@@ -15,6 +15,7 @@ import java.util.Optional;
 public class dbDaoOrder implements IDaoOrder{
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
     private ClientRepository clientRepository;
     @Override
     public List<Order> findAll() {

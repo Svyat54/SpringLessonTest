@@ -30,6 +30,12 @@ public class OrdersItem {
         this.order = order;
     }
 
+    public OrdersItem(Integer quantity, Item item, Order order) {
+        this.quantity = quantity;
+        this.item = item;
+        this.order = order;
+    }
+
     @Override
     public String toString() {
         return "{" +

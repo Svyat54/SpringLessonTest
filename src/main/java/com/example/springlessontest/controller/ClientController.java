@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/client")
-public class clientController {
+public class ClientController {
     @Autowired
     private IDaoClient iDaoClient;
 
