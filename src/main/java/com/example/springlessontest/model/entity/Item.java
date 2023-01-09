@@ -1,5 +1,6 @@
 package com.example.springlessontest.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,6 +20,7 @@ public class Item {
     private Long itemArticle;
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<OrdersItem> ordersItem;
 
     public Item() {

@@ -1,8 +1,10 @@
 package com.example.springlessontest.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -16,8 +18,9 @@ public class Client {
     @Column(nullable = false, length = 200)
     private String nameClient;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private Set<Order> orders;
+    private Set<Order> orders = new HashSet<>();
 
     public Client() {}
 

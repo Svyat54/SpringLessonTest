@@ -1,5 +1,6 @@
 package com.example.springlessontest.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,10 +16,12 @@ public class OrdersItem {
 
     @ManyToOne
     @JoinColumn(name = "item_id", nullable = false)
+    @JsonIgnore
     private Item item;
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
+    @JsonIgnore
     private Order order;
 
     public OrdersItem() {}

@@ -1,5 +1,6 @@
 package com.example.springlessontest.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,9 +19,11 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
+    @JsonIgnore
     private Client client;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<OrdersItem> ordersItems;
 
     public Order() {}

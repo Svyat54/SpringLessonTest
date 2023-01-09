@@ -14,12 +14,12 @@ public class ClientController {
     @Autowired
     private IDaoClient iDaoClient;
 
-//    @GetMapping("/add")
-//    public void add(){
-//        iDaoClient.save(new Client(1, "Jon"));
-//        iDaoClient.save(new Client(2, "Bob" ));
-//        iDaoClient.save(new Client(3, "Karl" ));
-//    }
+    @GetMapping("/add")
+    public void add(){
+        iDaoClient.save(new Client(1, "Jon"));
+        iDaoClient.save(new Client(2, "Bob" ));
+        iDaoClient.save(new Client(3, "Karl" ));
+    }
 
     @GetMapping("/all")
     public List<Client> all(){
