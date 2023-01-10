@@ -2,9 +2,15 @@ package com.example.springlessontest.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import org.hibernate.Hibernate;
 
-@Data
+import java.util.Objects;
+
+@Getter
+@Setter
+@ToString
+//@RequiredArgsConstructor
 @Entity
 @Table(name = "ordersItem_t")
 public class OrdersItem {
@@ -16,12 +22,10 @@ public class OrdersItem {
 
     @ManyToOne
     @JoinColumn(name = "item_id", nullable = false)
-    @JsonIgnore
     private Item item;
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    @JsonIgnore
     private Order order;
 
     public OrdersItem() {}
@@ -47,5 +51,18 @@ public class OrdersItem {
                 ", item=" + item +
                 ", order=" + order +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        OrdersItem that = (OrdersItem) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

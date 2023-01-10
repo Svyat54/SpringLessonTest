@@ -59,11 +59,6 @@ public class OrderController {
 
     @GetMapping("/delete")
     public Order delete(@RequestParam Integer id){
-        if(iDaoOrder.findById(id).isPresent()){
-            Order order = iDaoOrder.findById(id).get();
-            iDaoOrder.delete(id);
-            return order;
-        }
-        return null;
+        return iDaoOrder.delete(id);
     }
 }

@@ -19,7 +19,6 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
-    @JsonIgnore
     private Client client;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)

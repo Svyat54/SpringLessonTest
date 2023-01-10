@@ -41,10 +41,13 @@ public class dbDaoOrder implements IDaoOrder{
     }
 
     private Order updateOrder(Order order){
+        //Создаём экземпляр класа на обновление
         Order orderUp = orderRepository.findById(order.getId()).orElse(null);
         assert orderUp != null;
+        //Меняем описание
         orderUp.setDescription(order.getDescription());
         if(!Objects.equals(orderUp.getClient().getId(), order.getClient().getId())){
+            //Если меняем клиента в заказе, у клиента удаляем связь и присваиваем новую
             clientRepository.findById(orderUp.getClient().getId()).get().getOrders().remove(orderUp);
             orderUp.setClient(order.getClient());
             clientRepository.findById(order.getClient().getId()).get().getOrders().add(orderUp);
@@ -55,7 +58,9 @@ public class dbDaoOrder implements IDaoOrder{
     @Override
     public Order delete(Integer id) {
         if(orderRepository.findById(id).isPresent()){
+            //Создаём экземпляр класа для вывода.
             Order order = orderRepository.findById(id).get();
+            //При удалении Заказа, удаляем связь с клиентом
             clientRepository.findById(orderRepository.findById(id).get().getClient().getId())
                     .get().getOrders().remove(orderRepository.findById(id).get());
             orderRepository.deleteById(id);

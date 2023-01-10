@@ -45,16 +45,20 @@ public class dbDaoOrdersItem implements IDaoOrdersItem{
     }
 
     private OrdersItem updateOrdersItem(OrdersItem ordersItem){
+        //Создаём экземпляр класа на обновление
         OrdersItem ordersItemUP = ordersItemRepository.findById(ordersItem.getId()).orElse(null);
         assert ordersItemUP != null;
         if(ordersItemUP.getQuantity() != null)
+            //Меняем кол-во
             ordersItemUP.setQuantity(ordersItem.getQuantity());
         if(!Objects.equals(ordersItemUP.getItem().getId(), ordersItem.getItem().getId())){
+            //Если меняем товар в заказ-товаре, у товара удаляем связь и присваиваем новую
             itemRepository.findById(ordersItemUP.getItem().getId()).get().getOrdersItem().remove(ordersItemUP);
             ordersItemUP.setItem(ordersItem.getItem());
             itemRepository.findById(ordersItemUP.getItem().getId()).get().getOrdersItem().add(ordersItemUP);
         }
         if(!Objects.equals(ordersItemUP.getOrder().getId(), ordersItem.getItem().getId())){
+            //Если меняем ордер в заказ-товаре, у ордера удаляем связь и присваиваем новую
             orderRepository.findById(ordersItemUP.getOrder().getId()).get().getOrdersItems().remove(ordersItemUP);
             ordersItemUP.setOrder(ordersItem.getOrder());
             orderRepository.findById(ordersItemUP.getOrder().getId()).get().getOrdersItems().add(ordersItemUP);
@@ -65,7 +69,9 @@ public class dbDaoOrdersItem implements IDaoOrdersItem{
     @Override
     public OrdersItem delete(Integer id) {
         if(ordersItemRepository.findById(id).isPresent()){
+            //Создаём экземпляр класа для вывода.
             OrdersItem ordersItem = ordersItemRepository.findById(id).get();
+            //При удалении Заказ-товара, удаляем связь с товаром и ордером
             itemRepository.findById(ordersItemRepository.findById(id).get().getItem().getId())
                     .get().getOrdersItem().remove(ordersItemRepository.findById(id).get());
             orderRepository.findById(ordersItemRepository.findById(id).get().getOrder().getId())

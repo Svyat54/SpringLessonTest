@@ -14,6 +14,7 @@ public class ClientController {
     @Autowired
     private IDaoClient iDaoClient;
 
+    //Быстрое добавление объектов
     @GetMapping("/add")
     public void add(){
         iDaoClient.save(new Client(1, "Jon"));

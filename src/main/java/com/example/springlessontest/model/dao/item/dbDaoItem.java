@@ -39,6 +39,7 @@ public class dbDaoItem implements IDaoItem{
     @Override
     public Item delete(Integer id) {
         if(itemRepository.findById(id).isPresent()) {
+            //Создаём экземпляр класа для вывода.
             Item item = itemRepository.findById(id).get();
             itemRepository.deleteById(id);
             return item;

@@ -2,11 +2,16 @@ package com.example.springlessontest.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import org.hibernate.Hibernate;
 
+import java.util.Objects;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString
+//@RequiredArgsConstructor
 @Entity
 @Table(name = "item_t")
 public class Item {
@@ -21,6 +26,7 @@ public class Item {
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     @JsonIgnore
+    @ToString.Exclude
     private Set<OrdersItem> ordersItem;
 
     public Item() {
@@ -58,5 +64,18 @@ public class Item {
 
     public String getItemName() {
         return itemName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Item item = (Item) o;
+        return id != null && Objects.equals(id, item.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

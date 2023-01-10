@@ -39,6 +39,7 @@ public class dbDaoClient implements IDaoClient{
     @Override
     public Client delete(Integer id) {
         if(clientRepository.findById(id).isPresent()) {
+            //Создаём экземпляр класа для вывода.
             Client client = clientRepository.findById(id).get();
             clientRepository.deleteById(id);
             return client;

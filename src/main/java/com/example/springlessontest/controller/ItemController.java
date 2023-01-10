@@ -14,13 +14,13 @@ public class ItemController {
 
     @Autowired
     private IDaoItem iDaoItem;
-
-//    @GetMapping("/add")
-//    public void add(){
-//        iDaoItem.save(new Item(1, "Телевизор", 111L));
-//        iDaoItem.save(new Item(2, "Холодильник", 222L));
-//        iDaoItem.save(new Item(3, "X-Box", 333L));
-//    }
+    //Быстрое добавление объектов
+    @GetMapping("/add")
+    public void add(){
+        iDaoItem.save(new Item(1, "Телевизор", 111L));
+        iDaoItem.save(new Item(2, "Холодильник", 222L));
+        iDaoItem.save(new Item(3, "X-Box", 333L));
+    }
 
     @GetMapping("/all")
     public List<Item> all(){
